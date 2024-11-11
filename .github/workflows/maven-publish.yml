@@ -5,7 +5,7 @@ name: Maven Package
 
 on:
   push:
-    branches:
+    branches: 
     - main
 
 jobs:
@@ -25,13 +25,13 @@ jobs:
         distribution: 'temurin'
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         cache: 'maven'
-        
+
     - name: Check Java version
       run: java -version
     - name: Build with Maven
       run: mvn -B verify --file pom.xml
 
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy 
+      run: mvn deploy
       env:
         GITHUB_TOKEN: ${{ github.token }}
