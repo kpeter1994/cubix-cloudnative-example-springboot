@@ -24,7 +24,7 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
-        settings-path: ${{ github.workspace }} # location for the settings.xml file
+        settings-path: github 
         cache: 'maven'
         
     - name: Check Java version
@@ -35,4 +35,4 @@ jobs:
     - name: Publish to GitHub Packages Apache Maven
       run: mvn deploy 
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ github.token }}
